@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import { User } from '@/types/user'
+import { loginService } from '@/services/login.service'
 import { jwtDecode } from 'jwt-decode'
 import api from '@/lib/api'
 import axios, { AxiosError } from 'axios'
-import { loginService } from '@/services/login.service'
 
 export default function useAuth() {
     const [user, setUser] = useState<User | null>(null)
