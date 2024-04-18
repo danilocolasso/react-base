@@ -8,6 +8,10 @@ const router = createBrowserRouter([
     path: '/login',
     Component: Login,
   },
+  { // TODO remove
+    path: '/home',
+    Component: Home,
+  },
   {
     path: '',
     element: (

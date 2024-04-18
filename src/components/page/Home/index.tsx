@@ -1,9 +1,9 @@
-import { Page } from '@/components/layout/page'
+import { Screen } from '@/components/layout/screen'
 
 export const Home = () => {
   return (
-    <Page>
+    <Screen>
       <h1>Home</h1>
-    </Page>
+    </Screen>
   )
 }
