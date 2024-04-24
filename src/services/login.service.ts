@@ -13,15 +13,8 @@ export class LoginResponse {
 }
 
 export async function loginService(payload: LoginPayload): Promise<LoginResponse> {
-  const controller = new AbortController()
-
-  const headers = {
-    'Content-Type': 'application/json',
-    signal: controller.signal,
-  }
-
   payload.password = encryptPassword(payload.password)
-  const response = await api.post('login', payload, headers)
+  const response = await api.post('login', payload)
   
   return response.data
 }
