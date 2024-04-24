@@ -6,17 +6,16 @@ export interface LabelProps extends React.ComponentPropsWithoutRef<typeof LabelP
 }
 
 const Label = React.forwardRef<HTMLLabelElement, LabelProps>(
-  ({ className, required, ...props }, ref) => (
+  ({ className, required, htmlFor, ...props }, ref) => (
     <div className='flex items-center gap-1'>
       <LabelPrimitive.Root
         ref={ref}
         className={className}
+        htmlFor={htmlFor}
         {...props}
       />
-      {required && <span className='text-red-500'>*</span>}
+      {required && <span>*</span>}
     </div>
 ));
-
-Label.displayName = 'Label';
 
 export { Label };
