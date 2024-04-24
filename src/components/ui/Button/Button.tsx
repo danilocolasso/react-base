@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Slot } from '@radix-ui/react-slot';
 import { cn } from '@/utils/className';
 import { ButtonVariantProps, buttonVariants } from './buttonVariants';
 import { useButton } from './useButton';
@@ -31,21 +30,20 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       }
     };
 
-    const Comp = asChild ? Slot : 'button';
     return (
-      <Comp
+      <button
         className={cn(buttonVariants({ variant, size }), className)}
-        ref={ref}
+        disabled={disabled || loading}
         onClick={handleButtonClick}
         {...props}
-        disabled={disabled || loading}
+        ref={ref}
       >
         <div className='flex gap-2 items-center'>
           { icon && !loading && <Icon name={icon} /> }
           { loading && <Icon name="FaSpinner" className="animate-spin" /> }
           { props.children }
         </div>
-      </Comp>
+      </button>
     );
   }
 );

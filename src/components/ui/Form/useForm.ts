@@ -14,5 +14,8 @@ export function useForm<T extends FieldValues>(options: UseFormWithZodOptions<T>
         resolver: zodResolver(schema)
     });
 
-    return methods;
+    return {
+      ...methods,
+      errors: methods.formState.errors,
+    };
 }

@@ -3,37 +3,37 @@ import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '@/contexts/Auth/AuthContext'
 import { Screen } from '@/components/layout/screen'
 import { Card } from '@/components/ui/Card'
-import { Form, useForm, createSchema, SchemaInfer, validator } from '@/components/ui/Form'
+import { Form, useForm, createSchema, InferType, validator } from '@/components/ui/Form'
 import { Input } from '@/components/ui/Input'
 import { Button } from '@/components/ui/Button'
 import logo from '@/assets/logo.png'
 import './style.css'
+import { Message } from '@/components/ui/Message/Message'
 
 export const Login = () => {
   const [isLoading, setIsLoading] = useState(false)
 
   const schema = createSchema({
-    username: validator.string().min(1),
-    password: validator.string().min(6)
+    username: validator.string().min(1, 'O campo usuário é obrigatório'),
+    password: validator.string().min(6, 'O campo senha deve ter no mínimo 6 caracteres'),
   });
 
-  type LoginFormSchema = SchemaInfer<typeof schema>
+  type LoginForm = InferType<typeof schema>
 
-  const { register, handleSubmit, formState: {errors} } = useForm<LoginFormSchema>({
+  const { register, handleSubmit, errors } = useForm<LoginForm>({
     schema,
   })
 
   const auth = useContext(AuthContext)
   const navigate = useNavigate() 
 
-  const handleLogin = async (data: LoginFormSchema) => {
+  const handleLogin = async (data: LoginForm) => {
     setIsLoading(true)
 
     try {
       const response = await auth.login(data.username, data.password)
       
       if (response.success) {
-        setIsLoading(false)
         navigate('/')
         return
       }
@@ -51,10 +51,12 @@ export const Login = () => {
       <Card className='flex flex-col gap-4 p-4 py-10 w-96 paper-edge bg-tertiary'>
         <img src={logo} alt='Logo' className='w-1/3 self-center' />
         <Form onSubmit={handleSubmit(handleLogin)}>
-          <Input type='text' placeholder='Usuário' { ...register('username') } />
-          {errors.username && <p>{errors.username.message}</p>}
-          <Input type='password' placeholder='Senha' { ...register('password') } />
-          {errors.password && <p>{errors.password.message}</p>}
+          <Input type='text' placeholder='Usuário' { ...register('username') }>
+            {errors.username && <Message variant='destructive'>{errors.username.message}</Message>}
+          </Input>
+          <Input type='password' placeholder='Senha' { ...register('password') }>
+            {errors.password && <Message variant='destructive'>{errors.password.message}</Message>}
+          </Input>
           <Button className='bg-primary' type='submit' loading={isLoading}>OK</Button>
         </Form>
         <a href='#' className='self-start text-primary'>Esqueci minha senha</a>

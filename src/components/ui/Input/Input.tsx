@@ -6,17 +6,16 @@ import { uuid } from '@/utils/uuid';
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   required?: boolean;
-  validator?: (value: string) => boolean;
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({
     className,
     id,
+    children,
     type = 'text',
     label,
     required,
-    validator,
     ...props
   }, ref) => {
     if (label && !id) {
@@ -36,6 +35,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           ref={ref}
           {...props}
         />
+        {children}
       </div>
     );
   }
