@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { cn } from '@/utils/className';
 import { ButtonVariantProps, buttonVariants } from './buttonVariants';
-import { useButton } from './useButton';
 import { Icon, Icons } from '@/components/ui/Icon';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, ButtonVariantProps {
@@ -16,25 +15,16 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     variant,
     size,
     icon,
-    loading: isLoading,
+    loading,
     disabled,
     asChild = false,
     onClick,
     ...props
   }, ref) => {
-    const { loading, handleClick } = useButton();
-
-    const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-      if (onClick) {
-        handleClick(async () => onClick(e));
-      }
-    };
-
     return (
       <button
         className={cn(buttonVariants({ variant, size }), className)}
         disabled={disabled || loading}
-        onClick={handleButtonClick}
         {...props}
         ref={ref}
       >
