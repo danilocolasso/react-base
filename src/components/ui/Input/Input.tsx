@@ -2,22 +2,25 @@ import * as React from 'react';
 import { Label } from '@/components/ui/Label';
 import { cn } from '@/utils/className';
 import { uuid } from '@/utils/uuid';
+import { Message } from '@/components/ui/Message';
 
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   required?: boolean;
+  error?: string;
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({
     className,
     id,
-    children,
+    error,
     type = 'text',
     label,
     required,
     ...props
   }, ref) => {
+
     if (label && !id) {
       id = label.toLocaleLowerCase().replace(/\s+/g, '-') + '-' + uuid();
     }
@@ -35,10 +38,10 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           ref={ref}
           {...props}
         />
-        {children}
+        {error && <Message variant='destructive'>{error}</Message> }
       </div>
     );
   }
 );
 
-export default Input;
+export { Input };

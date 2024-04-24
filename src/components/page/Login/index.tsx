@@ -8,7 +8,6 @@ import { Input } from '@/components/ui/Input'
 import { Button } from '@/components/ui/Button'
 import logo from '@/assets/logo.png'
 import './style.css'
-import { Message } from '@/components/ui/Message/Message'
 
 export const Login = () => {
   const [isLoading, setIsLoading] = useState(false)
@@ -51,12 +50,8 @@ export const Login = () => {
       <Card className='flex flex-col gap-4 p-4 py-10 w-96 paper-edge bg-tertiary'>
         <img src={logo} alt='Logo' className='w-1/3 self-center' />
         <Form onSubmit={handleSubmit(handleLogin)}>
-          <Input type='text' placeholder='Usuário' { ...register('username') }>
-            {errors.username && <Message variant='destructive'>{errors.username.message}</Message>}
-          </Input>
-          <Input type='password' placeholder='Senha' { ...register('password') }>
-            {errors.password && <Message variant='destructive'>{errors.password.message}</Message>}
-          </Input>
+          <Input type='text' placeholder='Usuário' { ...register('username') } error={errors.username?.message} />
+          <Input type='password' placeholder='Senha' { ...register('password') } error={errors.password?.message} />
           <Button className='bg-primary' type='submit' loading={isLoading}>OK</Button>
         </Form>
         <a href='#' className='self-start text-primary'>Esqueci minha senha</a>
