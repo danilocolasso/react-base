@@ -5,7 +5,7 @@ export interface FormProps extends React.FormHTMLAttributes<HTMLFormElement> {
   orientation?: 'vertical' | 'horizontal';
 }
 
-const Form = React.forwardRef<HTMLFormElement, FormProps>(
+export const Form = React.forwardRef<HTMLFormElement, FormProps>(
   ({ children, orientation = 'vertical', ...props }, ref) => (
     <form
       className={cn('flex gap-4', orientation === 'vertical' && 'flex-col')}
@@ -15,5 +15,3 @@ const Form = React.forwardRef<HTMLFormElement, FormProps>(
       {children}
     </form>
 ));
-
-export { Form };

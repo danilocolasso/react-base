@@ -10,4 +10,3 @@ export const Card = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDi
     />
   )
 );
-Card.displayName = 'Card';

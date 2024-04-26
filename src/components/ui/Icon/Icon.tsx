@@ -7,7 +7,7 @@ interface IconProps extends IconVariantProps {
   className?: string;
 }
 
-const Icon: React.FC<IconProps> = ({ name, size, color, className }) => {
+export const Icon: React.FC<IconProps> = ({ name, size, color, className }) => {
   const IconComponent = Icons[name];
   if (!IconComponent) {
     console.error(`Icon "${name}" not found`);
@@ -17,5 +17,3 @@ const Icon: React.FC<IconProps> = ({ name, size, color, className }) => {
   const iconClassName = iconVariants({ size, color, className });
   return <IconComponent className={iconClassName} />;
 };
-
-export { Icon };

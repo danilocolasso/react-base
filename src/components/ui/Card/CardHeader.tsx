@@ -10,4 +10,3 @@ export const CardHeader = React.forwardRef<HTMLDivElement, React.HTMLAttributes<
     />
   )
 );
-CardHeader.displayName = 'CardHeader';

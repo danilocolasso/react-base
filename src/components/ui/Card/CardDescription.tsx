@@ -10,4 +10,3 @@ export const CardDescription = React.forwardRef<HTMLParagraphElement, React.HTML
     />
   )
 );
-CardDescription.displayName = 'CardDescription';

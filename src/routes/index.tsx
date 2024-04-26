@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom'
 import { AuthGuard } from '@/guards/AuthGuard'
-import { Login } from '@/components/page/Login'
-import { Home } from '@/components/page/Home'
+import { Login } from '@/pages/Login'
+import { Home } from '@/pages/Home'
 
 const router = createBrowserRouter([
   {
