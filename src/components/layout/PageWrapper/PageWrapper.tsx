@@ -5,7 +5,7 @@ export interface PageWrapperProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export const PageWrapper: React.FC<PageWrapperProps> = ({ children, className, ...props }) => {
   return (
-    <div className={cn('flex flex-col w-full max-w-7xl min-h-screen bg-slate-200', className)} {...props}>
+    <div className={cn('flex flex-col flex-grow w-full max-w-7xl', className)} {...props}>
       {children}
     </div>
   );

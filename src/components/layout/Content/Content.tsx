@@ -5,7 +5,7 @@ export interface ContentProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export const Content: React.FC<ContentProps> = ({ children, className, ...props }) => {
   return (
-    <main className={cn('flex flex-col w-full min-h-screen bg-blue-200', className)} {...props}>
+    <main className={cn('flex flex-col gap-4 w-full p-4 bg-brand-tertiary', className)} {...props}>
       {children}
     </main>
   );

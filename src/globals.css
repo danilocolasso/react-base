@@ -31,6 +31,10 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
+    --brand-primary: 5, 74%, 42%;
+    --brand-secondary: 15, 89%, 56%;
+    --brand-tertiary: 183, 33%, 88%;
+
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;

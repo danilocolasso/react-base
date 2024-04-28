@@ -5,7 +5,7 @@ import { Form } from '@/components/ui/Form';
 import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
 import logo from '@/assets/logo.png';
-import './style.css';
+import './Login.styles.css';
 
 export const Login = () => {
   const { register, handleSubmit, handleLogin, isLoading, errors } = useLogin();

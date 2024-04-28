@@ -5,9 +5,10 @@ export const iconVariants = cva(
   {
     variants: {
       size: {
-        small: 'w-4 h-4',
-        medium: 'w-6 h-6',
-        large: 'w-8 h-8',
+        xs: 'w-2 h-2',
+        sm: 'w-4 h-4',
+        md: 'w-6 h-6',
+        lg: 'w-8 h-8',
       },
       color: {
         primary: 'text-primary',
@@ -17,7 +18,7 @@ export const iconVariants = cva(
       }
     },
     defaultVariants: {
-      size: 'small',
+      size: 'sm',
       color: 'muted',
     }
   }
