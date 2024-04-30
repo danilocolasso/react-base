@@ -1,27 +1,24 @@
-import { Screen } from '@/components/layout/Screen'
-import { Sidebar } from '@/components/layout/Sidebar'
-import { Content } from '@/components/layout/Content'
-import { Footer } from '@/components/layout/Footer'
-import { PageWrapper } from '@/components/layout/PageWrapper'
-import { Header } from '@/components/layout/Header'
-import { Breadcrumbs } from '@/components/layout/Breadcrumbs/Breadcrumbs'
+import { HomeLayout } from '@/layouts/HomeLayout';
+import { Alerts } from './Alerts';
+import { Action } from './Action';
+import { useNavbar } from '@/components/Navbar/useNavbar';
 
 export const Home = () => {
+  const { items } = useNavbar();
+  const actions = items.filter(item => item.route !== '/');
+  const variants = ['green', 'blue', 'yellow', 'purple'];
+  
   return (
-    <Screen>
-      <PageWrapper>
-        <Header />
-        <div className='flex flex-grow'>
-          <Sidebar />
-          <Content>
-            <Breadcrumbs />
-            <div className='flex flex-col flex-grow w-full bg-white'>
+    <HomeLayout>
+      <div className='flex w-full gap-16'>
+        <section className='flex gap-4 pl-12'>
+          {actions.map((item, index) => (
+            <Action key={item.route} item={item} variant={variants[index % variants.length] as any} />
+          ))}
+        </section>
 
-            </div>
-          </Content>
-        </div>
-        <Footer />
-      </PageWrapper>
-    </Screen>
+        <Alerts />
+      </div>
+    </HomeLayout>
   )
 };

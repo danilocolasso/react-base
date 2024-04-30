@@ -6,7 +6,10 @@ import { SidebarItem } from './SidebarItem';
 export interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export const Sidebar: React.FC<SidebarProps> = ({ className, ...props }) => {
-  const { items } = useSidebar();
+  const { items, open } = useSidebar();
+
+  if (!open) return null;
+  
   return (
     <div className={cn('flex flex-col w-1/3 ', className)} {...props}>
       <aside className='bg-gray-100'>

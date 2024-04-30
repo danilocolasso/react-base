@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useForm, createSchema, validator, InferType } from '@/components/ui/Form';
+import { useForm, createSchema, validator, InferType } from '@/components/Form';
 import { AuthContext } from '@/contexts/Auth/AuthContext';
 
 export const useLogin = () => {

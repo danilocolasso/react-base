@@ -31,9 +31,14 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --brand-primary: 5, 74%, 42%;
-    --brand-secondary: 15, 89%, 56%;
-    --brand-tertiary: 183, 33%, 88%;
+    --brand-primary: 5 74% 42%;
+    --brand-secondary: 15 89% 56%;
+    --brand-tertiary: 183 33% 88%;
+  
+    --paper-green: 179 31% 68%;
+    --paper-blue: 206 20% 52%;
+    --paper-yellow: 30 69% 65%;
+    --paper-purple: 292 17% 55%;
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;

@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Label } from '@/components/ui/Label';
+import { Label } from '@/components/Label';
 import { cn } from '@/utils/className';
 import { uuid } from '@/utils/uuid';
-import { Message } from '@/components/ui/Message';
+import { Message } from '@/components/Message';
 
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;

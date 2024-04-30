@@ -1,7 +1,7 @@
 import { cn } from '@/utils/className';
 import React from 'react';
 import logo from '@/assets/logo.png';
-import { Navbar } from '@/components/layout/Navbar';
+import { Navbar } from '@/components/Navbar';
 import { HeaderUser } from '../HeaderUser';
 
 export interface HeaderProps extends React.HTMLAttributes<HTMLDivElement> {}

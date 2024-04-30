@@ -5,7 +5,7 @@ export interface FooterProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export const Footer: React.FC<FooterProps> = ({ children, className, ...props }) => {
   return (
-    <footer className={cn('flex flex-col bg-green-200', className)} {...props}>
+    <footer className={cn('flex flex-col', className)} {...props}>
       {children}
     </footer>
   );

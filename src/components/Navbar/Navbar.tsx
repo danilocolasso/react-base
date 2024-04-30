@@ -1,4 +1,4 @@
-import { Icon } from '@/components/ui/Icon';
+import { Icon } from '@/components/Icon';
 import React from 'react';
 import { NavbarItem, useNavbar } from './useNavbar';
 import { Link } from 'react-router-dom';

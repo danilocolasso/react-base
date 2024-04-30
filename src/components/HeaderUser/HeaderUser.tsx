@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon, Icons } from '@/components/ui/Icon';
+import { Icon, Icons } from '@/components/Icon';
 import { useHeaderUser } from './useHeaderUser';
 import { Link } from 'react-router-dom';
 

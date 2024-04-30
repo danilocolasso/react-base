@@ -1,4 +1,4 @@
-import { Icon, Icons } from '@/components/ui/Icon';
+import { Icon, Icons } from '@/components/Icon';
 import { cn } from '@/utils/className';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';

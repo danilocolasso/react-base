@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { cn } from '@/utils/className';
 import { ButtonVariantProps, buttonVariants } from './buttonVariants';
-import { Icon, Icons } from '@/components/ui/Icon';
+import { Icon, Icons } from '@/components/Icon';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, ButtonVariantProps {
   asChild?: boolean;

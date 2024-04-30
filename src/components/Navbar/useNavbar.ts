@@ -1,4 +1,4 @@
-import { Icons } from '@/components/ui/Icon';
+import { Icons } from '@/components/Icon';
 import { navbarItems } from './navbarConfig';
 
 export type NavbarItem = {

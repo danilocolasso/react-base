@@ -59,7 +59,28 @@ module.exports = {
           primary: "hsl(var(--brand-primary))",
           secondary: "hsl(var(--brand-secondary))",
           tertiary: "hsl(var(--brand-tertiary))",
-        }
+        },
+        'paper-green': {
+          DEFAULT: "hsl(var(--paper-green))",
+        },
+        'paper-blue': {
+          DEFAULT: "hsl(var(--paper-blue))",
+        },
+        'paper-yellow': {
+          DEFAULT: "hsl(var(--paper-yellow))",
+        },
+        'paper-purple': {
+          DEFAULT: "hsl(var(--paper-purple))",
+        },
+      },
+      backgroundImage: {
+          'paper-border-primary': "linear-gradient(135deg, transparent 50%, hsl(var(--primary)) 50%), linear-gradient(225deg, transparent 50%, hsl(var(--primary)) 50%)",
+          'paper-border-secondary': "linear-gradient(135deg, transparent 50%, hsl(var(--secondary)) 50%), linear-gradient(225deg, transparent 50%, hsl(var(--secondary)) 50%)",
+          'paper-border-tertiary': "linear-gradient(135deg, transparent 50%, hsl(var(--tertiary)) 50%), linear-gradient(225deg, transparent 50%, hsl(var(--tertiary)) 50%)",
+          'paper-border-green': "linear-gradient(135deg, transparent 50%, hsl(var(--paper-green)) 50%), linear-gradient(225deg, transparent 50%, hsl(var(--paper-green)) 50%)",
+          'paper-border-blue': "linear-gradient(135deg, transparent 50%, hsl(var(--paper-blue)) 50%), linear-gradient(225deg, transparent 50%, hsl(var(--paper-blue)) 50%)",
+          'paper-border-yellow': "linear-gradient(135deg, transparent 50%, hsl(var(--paper-yellow)) 50%), linear-gradient(225deg, transparent 50%, hsl(var(--paper-yellow)) 50%)",
+          'paper-border-purple': "linear-gradient(135deg, transparent 50%, hsl(var(--paper-purple)) 50%), linear-gradient(225deg, transparent 50%, hsl(var(--paper-purple)) 50%)",
       },
       borderRadius: {
         lg: "var(--radius)",

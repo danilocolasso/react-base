@@ -1,4 +1,4 @@
-import { Icons } from '@/components/ui/Icon';
+import { Icons } from '@/components/Icon';
 
 export type HeaderUserAction = {
   icon: keyof typeof Icons;
