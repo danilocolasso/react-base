@@ -11,7 +11,7 @@ export const Navbar: React.FC<NavbarProps> = (props) => {
   function getLink(key: number, item: NavbarItem) {
     return  (
       <Link key={key} to={item.route} className='text-primary px-2 py-4 hover:pt-3 hover:pb-5 transition-all' title={item.label}>
-        <Icon name={item.icon} size='md' />
+        <Icon name={item.icon} size='md' color='muted' />
       </Link>
     );
   }

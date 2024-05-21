@@ -19,7 +19,7 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children, className, ...
           <Sidebar />
           <Content>
             <Breadcrumbs />
-            <div className={cn('flex flex-col flex-grow w-full bg-white', className)} {...props}>
+            <div className={cn('flex flex-col flex-grow w-full p-4 gap-4 bg-white', className)} {...props}>
               {children}
             </div>
           </Content>

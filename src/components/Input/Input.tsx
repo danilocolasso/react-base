@@ -26,15 +26,12 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     }
 
     return (
-      <div className='flex flex-col gap-1 w-full'>
+      <div className={cn('flex flex-col gap-1 w-full', className)}>
         {label && <Label htmlFor={id} required={required}>{label}</Label>}
         <input
           type={type}
           id={id}
-          className={cn(
-            'flex h-9 w-full rounded-sm border border-input bg-white px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring !ring-primary disabled:cursor-not-allowed disabled:opacity-50',
-            className,
-          )}
+          className='flex h-9 w-full rounded-sm border border-input bg-white px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring !ring-primary disabled:cursor-not-allowed disabled:opacity-50'
           ref={ref}
           {...props}
         />

@@ -1,4 +1,5 @@
 import { Icon, Icons } from '@/components/Icon';
+import { Divider } from '@/components/Divider';
 import { cn } from '@/utils/className';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -22,7 +23,7 @@ export const SidebarItem: React.FC<SidebarItemProps> = ({ icon, label, route, ch
   function getLink() {
     return (
       <Link to={route!} className={className}>
-        {icon && <Icon name={icon} size='md' className='text-gray-600' />}
+        {icon && <Icon name={icon} size='md' className='!text-gray-600' />}
         <span className='text-sm'>{label}</span>
       </Link>
     );
@@ -31,7 +32,7 @@ export const SidebarItem: React.FC<SidebarItemProps> = ({ icon, label, route, ch
   function getFather() {
     return (
       <a onClick={handleToggleOpen} className={className}>
-        {icon && <Icon name={icon} size='md' className='text-gray-600' />}
+        {icon && <Icon name={icon} size='md' className='!text-gray-600' />}
         <span className='text-sm'>{label}</span>
         <Icon name={open ? 'FaChevronDown' : 'FaChevronLeft'} size='xs' className='ml-auto text-gray-600' />
       </a>
@@ -49,7 +50,7 @@ export const SidebarItem: React.FC<SidebarItemProps> = ({ icon, label, route, ch
   }
 
   if (!route && !children) {
-    return <hr className='border-gray-200' />;
+    return <Divider />;
   }
   
   return (

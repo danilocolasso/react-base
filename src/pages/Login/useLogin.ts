@@ -7,8 +7,8 @@ export const useLogin = () => {
   const [isLoading, setIsLoading] = useState(false)
 
   const schema = createSchema({
-    username: validator.string().min(1, 'O campo usuário é obrigatório'),
-    password: validator.string().min(6, 'O campo senha deve ter no mínimo 6 caracteres'),
+    username: validator.string().min(1, 'O campo "Usuário" é obrigatório'),
+    password: validator.string().min(6, 'O campo "Senha" deve ter no mínimo 6 caracteres'),
   });
 
   type LoginForm = InferType<typeof schema>

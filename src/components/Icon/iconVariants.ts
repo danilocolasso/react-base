@@ -17,11 +17,12 @@ export const iconVariants = cva(
         secondary: 'text-secondary',
         accent: 'text-accent',
         muted: 'text-muted',
+        inheritance: '',
       }
     },
     defaultVariants: {
       size: 'sm',
-      color: 'muted',
+      color: 'inheritance',
     }
   }
 );
