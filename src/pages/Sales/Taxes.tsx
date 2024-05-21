@@ -4,6 +4,7 @@ import { Label } from '@/components/Label';
 import { Section } from '@/components/Section';
 import React from 'react';
 import { useSales } from './useSales';
+import { Textarea } from '@/components/Textarea';
 
 export interface TaxesProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -28,8 +29,7 @@ export const Taxes: React.FC<TaxesProps> = ({ children, ...props }) => {
             >
             adicionar imposto
           </Button>
-          <Input
-            type='text'
+          <Textarea
             label='Informações complementares'
             { ...register('additionalInfo') }
             error={errors.additionalInfo?.message}

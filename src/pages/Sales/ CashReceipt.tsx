@@ -3,6 +3,7 @@ import { Select, SelectOption } from '@/components/Select';
 import React from 'react';
 import { useSales } from './useSales';
 import { Input } from '@/components/Input';
+import { Textarea } from '@/components/Textarea';
 
 export interface CashReciptProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -49,8 +50,7 @@ export const CashRecipt: React.FC<CashReciptProps> = ({ children, ...props }) =>
         />
       </div>
 
-      <Input
-        type='text'
+      <Textarea
         label='Histórico'
         // className='w-3/5'
         { ...register('history') }
@@ -64,8 +64,7 @@ export const CashRecipt: React.FC<CashReciptProps> = ({ children, ...props }) =>
           { ...register('deliveryDeadlinePreview') }
           error={errors.deliveryDeadlinePreview?.message}
         />
-        <Input
-          type='text'
+        <Textarea
           label='Observações'
           className='w-3/5'
           { ...register('observations') }
