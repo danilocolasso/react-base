@@ -3,6 +3,7 @@ import { Section } from '@/components/Section';
 import React from 'react';
 import { Select, SelectOption } from '@/components/Select';
 import { useSales } from '../useSales';
+import { DatePicker } from '@/components/DatePicker/DatePicker';
 
 export interface SaleInfoProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -54,12 +55,16 @@ export const SaleInfo: React.FC<SaleInfoProps> = ({ children, ...props }) => {
   return (
     <Section title={getTitle()} subtitle={getSubtitle()} {...props}>
       <div className='flex gap-4'>
-        <Input
+        {/* <Input
           type='text'
           label='Data'
           className='w-1/3'
           { ...register('date') }
           error={errors.date?.message}
+        /> */}
+        <DatePicker
+          label='Data'
+          className='w-1/3'
         />
         <Select
           label='Vendedor'
