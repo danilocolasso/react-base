@@ -7,6 +7,7 @@ import { cn } from '@/utils/className'
 import { Label } from '@/components/Label'
 import { uuid } from '@/utils/uuid'
 import { Input } from '@/components/Input'
+import { InputSearch } from '../InputSearch'
 
 const SelectBase = SelectPrimitive.Root
 const SelectGroup = SelectPrimitive.Group
@@ -97,8 +98,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
           </SelectTrigger>
           <SelectContent>
             <div className="p-2">
-              <Input
-                type="text"
+              <InputSearch
                 value={searchValue}
                 onChange={handleSearchChange}
                 placeholder="Buscar"
