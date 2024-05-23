@@ -14,6 +14,14 @@ export const SaleInfo: React.FC<SaleInfoProps> = ({ children, ...props }) => {
       label: 'Vendedor 1',
       value: '1',
     },
+    {
+      label: 'Vendedor 2',
+      value: '2',
+    },
+    {
+      label: 'Vendedor 3',
+      value: '3',
+    },
   ];
 
   const customerOptions: SelectOption[] = [

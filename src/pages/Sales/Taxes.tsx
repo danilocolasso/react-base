@@ -1,5 +1,4 @@
 import { Button } from '@/components/Button';
-import { Input } from '@/components/Input';
 import { Label } from '@/components/Label';
 import { Section } from '@/components/Section';
 import React from 'react';

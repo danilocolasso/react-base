@@ -4,18 +4,13 @@ import React from 'react';
 import { useSales } from './useSales';
 import { Input } from '@/components/Input';
 import { Textarea } from '@/components/Textarea';
+import { AsyncSelect } from '@/components/AsyncSelect/AsyncSelect';
+import { recipeMethodService } from '@/services/receipt-method.service';
 
 export interface CashReciptProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export const CashRecipt: React.FC<CashReciptProps> = ({ children, ...props }) => {
   const { register, errors } = useSales();
-
-  const receivingMethodOptions: SelectOption[] = [
-    {
-      label: 'Receiving 1',
-      value: '1',
-    },
-  ];
 
   const inputAccountOptions: SelectOption[] = [
     {
@@ -24,20 +19,17 @@ export const CashRecipt: React.FC<CashReciptProps> = ({ children, ...props }) =>
     },
   ];
 
-  const requesterOption: SelectOption[] = [
-    {
-      label: 'Requester 1',
-      value: '1',
-    },
-  ];
-
   return (
     <Section title='Recebimentos à vista' {...props}>
       <div className='flex gap-4'>
-        <Select
+        <AsyncSelect
           label='Forma de recebimento'
           className='w-2/5'
-          options={receivingMethodOptions}
+          service={recipeMethodService}
+          map={(options) => options.map((option) => ({
+            label: option.name,
+            value: option.id,
+          }))}
           { ...register('receivingMethod') }
           error={errors.receivingMethod?.message}
         />
@@ -52,7 +44,6 @@ export const CashRecipt: React.FC<CashReciptProps> = ({ children, ...props }) =>
 
       <Textarea
         label='Histórico'
-        // className='w-3/5'
         { ...register('history') }
         error={errors.history?.message}
       />
