@@ -2,7 +2,7 @@ import { Button } from '@/components/Button';
 import { Label } from '@/components/Label';
 import { Section } from '@/components/Section';
 import React from 'react';
-import { useSales } from './useSales';
+import { useSales } from '../useSales';
 import { Textarea } from '@/components/Textarea';
 
 export interface TaxesProps extends React.HTMLAttributes<HTMLDivElement> {}

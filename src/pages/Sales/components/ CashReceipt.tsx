@@ -1,7 +1,7 @@
 import { Section } from '@/components/Section';
 import { Select, SelectOption } from '@/components/Select';
 import React from 'react';
-import { useSales } from './useSales';
+import { useSales } from '../useSales';
 import { Input } from '@/components/Input';
 import { Textarea } from '@/components/Textarea';
 import { AsyncSelect } from '@/components/AsyncSelect/AsyncSelect';

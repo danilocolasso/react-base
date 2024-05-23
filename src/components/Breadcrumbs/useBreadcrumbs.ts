@@ -12,10 +12,12 @@ export const useBreadcrumbs = () => {
   const pathnames = location.pathname.split('/').filter(x => x);
   
   const items: BreadcrumbsItem[] = pathnames.map((_, index) => {
-    const route = pathnames.slice(0, index + 1).join('/');
+    const segments = pathnames.slice(0, index + 1);
+    const lastSegment = segments[segments.length - 1];
+    const route = segments.join('/');
 
     return {
-      label: breadcrumbsNames[route],
+      label: breadcrumbsNames[lastSegment],
       current: route === location.pathname.slice(1),
       route: `/${route}`,
     };

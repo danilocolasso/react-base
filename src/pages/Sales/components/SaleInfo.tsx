@@ -2,7 +2,7 @@ import { Input } from '@/components/Input';
 import { Section } from '@/components/Section';
 import React from 'react';
 import { Select, SelectOption } from '@/components/Select';
-import { useSales } from './useSales';
+import { useSales } from '../useSales';
 
 export interface SaleInfoProps extends React.HTMLAttributes<HTMLDivElement> {}
 

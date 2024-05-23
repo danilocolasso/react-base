@@ -14,7 +14,7 @@ const router = createBrowserRouter([
     Component: Home,
   },
   { // TODO remove
-    path: '/sales',
+    path: '/operations/orders/new',
     Component: Sales,
   },
   {

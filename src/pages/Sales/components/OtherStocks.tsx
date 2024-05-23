@@ -2,12 +2,13 @@ import { Button } from '@/components/Button';
 import { Label } from '@/components/Label';
 import { Section } from '@/components/Section';
 import React from 'react';
+import { Total } from './Total';
 
-export interface SelfManufacturedGoodsProps extends React.HTMLAttributes<HTMLDivElement> {}
+export interface OtherStocksProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-export const SelfManufacturedGoods: React.FC<SelfManufacturedGoodsProps> = ({ children, ...props }) => {
+export const OtherStocks: React.FC<OtherStocksProps> = ({ children, ...props }) => {
   return (
-    <Section title='Bens de fabricação própria' {...props}>
+    <Section title='Outros estoques' {...props}>
       <div className='grid grid-flow-col gap-1'>
         <Label className='col-span-4'>Item</Label>
         <Label>Quantidade</Label>
@@ -21,15 +22,12 @@ export const SelfManufacturedGoods: React.FC<SelfManufacturedGoodsProps> = ({ ch
             icon='FaPlusSquare'
             className='w-min px-0'
             // onClick={}
-          >
+            >
             adicionar
           </Button>
         </div>
       </div>
-      <div className='flex items-center justify-center text-gray-500'>
-        <span>Total em bens de fabricação própria</span>
-        <span className='self-end place-self-end snap-end'>R$ 0,00</span>
-      </div>
+      <Total label='Total em outros estoques' value='0.00' />
     </Section>
   );
 };
