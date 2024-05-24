@@ -3,7 +3,7 @@ import { Section } from '@/components/Section';
 import React from 'react';
 import { Select, SelectOption } from '@/components/Select';
 import { useSales } from '../useSales';
-import { DatePicker } from '@/components/DatePicker/DatePicker';
+import { DatePicker } from '@/components/DatePicker';
 
 export interface SaleInfoProps extends React.HTMLAttributes<HTMLDivElement> {}
 

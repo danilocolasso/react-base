@@ -1,8 +1,8 @@
-import { Button } from '@/components/Button';
 import { Label } from '@/components/Label';
 import { Section } from '@/components/Section';
 import React from 'react';
 import { Total } from './Total';
+import { DynamicItemAdder } from './DynamicItemAdder';
 
 export interface SelfManufacturedGoodsProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -15,18 +15,7 @@ export const SelfManufacturedGoods: React.FC<SelfManufacturedGoodsProps> = ({ ch
         <Label>Valor unitário</Label>
         <Label>Total</Label>
       </div>
-      <div className='grid grid-flow-col gap-1'>
-        <div className='col-span-4'>
-          <Button
-            variant='link'
-            icon='FaPlusSquare'
-            className='w-min px-0'
-            // onClick={}
-          >
-            adicionar
-          </Button>
-        </div>
-      </div>
+      <DynamicItemAdder fieldName='selfManufacturedGoods' />
       <Total label='Total em bens de fabricação própria' value='0.00' />
     </Section>
   );

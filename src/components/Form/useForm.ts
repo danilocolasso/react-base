@@ -1,4 +1,4 @@
-import { useForm as useReactHookForm, UseFormProps, FieldValues } from 'react-hook-form';
+import { useForm as useReactHookForm, UseFormProps, FieldValues, useFieldArray } from 'react-hook-form';
 import { ZodSchema } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 
@@ -16,6 +16,7 @@ export function useForm<T extends FieldValues>(options: UseFormWithZodOptions<T>
 
     return {
       ...methods,
+      useFieldArray,
       errors: methods.formState.errors,
     };
 }

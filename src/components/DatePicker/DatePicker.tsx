@@ -1,5 +1,5 @@
-import React, { useRef, useState } from 'react'
-import { format, parse, isValid } from 'date-fns'
+import React from 'react'
+import { format } from 'date-fns'
 
 
 import { cn } from '@/utils/className'
@@ -11,6 +11,7 @@ import {
 } from '@/components/Popover'
 import { Label } from '@/components/Label'
 import { Input } from '@/components/Input'
+import { useDatePicker } from './useDatePicker'
 
 export interface DatePickerProps extends React.HTMLAttributes<HTMLInputElement> {
   label?: string
@@ -31,30 +32,14 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   submitDateFormat = 'yyyy-MM-dd',
   placeholder,
 }) => {
-  const [date, setDate] = useState<Date>()
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  const handleDateSelect = (selectedDate: Date | undefined) => {
-    setDate(selectedDate);
-    setIsOpen(false);
-    if (inputRef.current) {
-      inputRef.current.value = selectedDate
-        ? format(selectedDate, dateFormat)
-        : '';
-    }
-  };
-
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const inputValue = event.target.value;
-    const parsedDate = parse(inputValue, dateFormat, new Date());
-
-    if (isValid(parsedDate)) {
-      setDate(parsedDate);
-    } else {
-      setDate(undefined);
-    }
-  };
+  const {
+    date,
+    isOpen,
+    inputRef,
+    setIsOpen,
+    handleDateSelect,
+    handleInputChange,
+  } = useDatePicker(dateFormat);
 
   if (!placeholder) {
     placeholder = dateFormat.replace(/[a-zA-Z]/g, '_');
@@ -90,4 +75,4 @@ export const DatePicker: React.FC<DatePickerProps> = ({
       </Popover>
     </div>
   )
-}
+};

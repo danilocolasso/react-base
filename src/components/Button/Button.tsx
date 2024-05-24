@@ -17,12 +17,13 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     icon,
     loading,
     disabled,
+    type = 'button',
     asChild = false,
-    onClick,
     ...props
   }, ref) => {
     return (
       <button
+        type={type}
         className={cn(buttonVariants({ variant, size }), className)}
         disabled={disabled || loading}
         {...props}
