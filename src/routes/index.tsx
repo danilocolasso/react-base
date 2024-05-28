@@ -3,6 +3,7 @@ import { AuthGuard } from '@/guards/AuthGuard'
 import { Login } from '@/pages/Login'
 import { Home } from '@/pages/Home'
 import { Sales } from '@/pages/Sales'
+import { Order } from '@/pages/Sales/Order'
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
   { // TODO remove
     path: '/operations/orders/new',
     Component: Sales,
+  },
+  { // TODO remove
+    path: '/operations/orders',
+    Component: Order,
   },
   {
     path: '',
