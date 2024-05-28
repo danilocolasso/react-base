@@ -27,8 +27,8 @@ export const DynamicItemAdder: React.FC<DynamicItemAdderProps> = ({ fieldName, c
         />
         <Input
           type='number'
+          inputClassName='text-right'
           min={1}
-          dir='rtl'
           step={1}
           {...register(`${fieldName}.${index}.quantidade`, {
             onChange: () => calculateTotal(index)
@@ -37,7 +37,7 @@ export const DynamicItemAdder: React.FC<DynamicItemAdderProps> = ({ fieldName, c
         />
         <Input
           type='number'
-          dir='rtl'
+          inputClassName='text-right'
           step={0.05}
           {...register(`${fieldName}.${index}.valorUnitario`, {
             onChange: () => calculateTotal(index)
@@ -45,8 +45,7 @@ export const DynamicItemAdder: React.FC<DynamicItemAdderProps> = ({ fieldName, c
           error={errors[fieldName]?.[index]?.valorUnitario?.message}
         />
         <Input
-          type='number'
-          dir='rtl'
+          inputClassName='text-right'
           readOnly
           {...register(`${fieldName}.${index}.total`)}
           error={errors[fieldName]?.[index]?.total?.message}

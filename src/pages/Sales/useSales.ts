@@ -1,4 +1,5 @@
 import { InferType, createSchema, useForm, validator } from '@/components/Form';
+import { formatCurrency } from '@/utils/formatCurrency';
 
 export const useSales = () => {
   const itemSchema = createSchema({
@@ -53,7 +54,7 @@ export const useSales = () => {
     const quantidade = getValues(`goodsForSale.${index}.quantidade`);
     const valorUnitario = getValues(`goodsForSale.${index}.valorUnitario`);
     const total = parseInt(quantidade) * parseFloat(valorUnitario);
-    setValue(`goodsForSale.${index}.total`, total.toFixed(2));
+    setValue(`goodsForSale.${index}.total`, formatCurrency(total.toFixed(2)));
   };
 
   return {
