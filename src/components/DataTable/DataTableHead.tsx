@@ -4,7 +4,7 @@ interface DataTableHeadProps<T> extends Omit<DataTableProps<T>, 'service'> {
   onSort: (key: keyof T) => void;
 }
 
-export const DataTableHead = <T,>({ columns, sort, order, onSort }: DataTableHeadProps<T>) => { 
+export const DataTableHead = <T,>({ columns, sort, order, onSort, selectable }: DataTableHeadProps<T>) => { 
   return (
     <thead>
       <tr>

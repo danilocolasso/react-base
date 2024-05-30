@@ -1,10 +1,11 @@
 import { DataTableProps } from './DataTable';
+import { DataTableActions } from './DataTableActions';
 
 interface DataTableBodyProps<T> extends Omit<DataTableProps<T>, 'service'> {
   data: T[];
 }
 
-export const DataTableBody = <T,>({ data, columns }: DataTableBodyProps<T>) => {
+export const DataTableBody = <T,>({ data, columns, actions }: DataTableBodyProps<T>) => {
   return (
     <tbody>
       {data.map((row, index) => (
@@ -14,6 +15,7 @@ export const DataTableBody = <T,>({ data, columns }: DataTableBodyProps<T>) => {
               {row[column.key] as string}
             </td>
           ))}
+          { actions && <td><DataTableActions actions={actions} row={row} /></td> }
         </tr>
       ))}
     </tbody>

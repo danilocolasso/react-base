@@ -4,6 +4,7 @@ import { useDataTable } from './useDataTable';
 import { DataTablePagination } from './DataTablePagination';
 import { PaginatedPayload } from '@/services/base/PaginatedPayload';
 import { PaginatedResponse } from '@/services/base/PaginatedResponse';
+import { TableAction } from '@/components/DataTable/DataTableActions';
 
 export interface TableColumn<T> {
   key: keyof T;
@@ -14,6 +15,7 @@ export interface TableColumn<T> {
 export interface DataTableProps<T> {
   service: (params: PaginatedPayload) => Promise<PaginatedResponse<T>>;
   columns: TableColumn<T>[];
+  actions?: TableAction<T>[];
   sort?: keyof T | undefined;
   order?: 'asc' | 'desc' | undefined;
   pagination?: boolean;
@@ -22,6 +24,7 @@ export interface DataTableProps<T> {
 export const DataTable = <T,>({
   service,
   columns,
+  actions,
   sort: defaultSort,
   order: defaultOrder,
   pagination = true,
@@ -47,7 +50,7 @@ export const DataTable = <T,>({
     <div className='flex flex-col gap-2'>
       <table className='w-full border-collapse'>
         <DataTableHead columns={columns} sort={sort} order={order} onSort={handleSort} />
-        <DataTableBody columns={columns} data={data} />
+        <DataTableBody columns={columns} data={data} actions={actions} />
       </table>
       {pagination && (
         <DataTablePagination
