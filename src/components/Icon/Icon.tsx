@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { iconVariants, IconVariantProps } from './iconVariants';
 import { Icons } from '.';
+import { cn } from '@/utils/className';
 
 interface IconProps extends IconVariantProps {
   name: keyof typeof Icons;
@@ -14,6 +15,6 @@ export const Icon: React.FC<IconProps> = ({ name, size, color, className }) => {
     return null;
   }
 
-  const iconClassName = iconVariants({ size, color, className });
-  return <IconComponent className={iconClassName} />;
+  const iconClassName = iconVariants({ size, color });
+  return <IconComponent className={cn(iconClassName, className)} />;
 };

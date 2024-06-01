@@ -31,12 +31,13 @@ const actions: TableAction<Order>[] = [
     icon: 'FaSearch',
     variant: 'primary',
     className: 'rounded-full',
+    title: 'Visualizar',
     onClick: (item: Order) => {
       console.log('View', item);
     },
   },
   {
-    label: 'Edit',
+    label: 'Editar',
     onClick: (item: Order) => {
       console.log('Edit', item);
     },
@@ -50,7 +51,6 @@ export const Order = () => {
         service={orderService}
         columns={columns}
         actions={actions}
-        pagination={true}
         sort="customerName"
         order="asc"
       />

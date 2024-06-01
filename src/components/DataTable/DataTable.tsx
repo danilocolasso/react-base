@@ -47,20 +47,22 @@ export const DataTable = <T,>({
   }
 
   return (
-    <div className='flex flex-col gap-2'>
-      <table className='w-full border-collapse'>
-        <DataTableHead columns={columns} sort={sort} order={order} onSort={handleSort} />
-        <DataTableBody columns={columns} data={data} actions={actions} />
-      </table>
+    <div className='flex flex-col gap-2 p-3'>
+      <div className='flex px-4 rounded-sm border relative w-full overflow-auto'>
+        <table className='w-full border-collapse caption-bottom text-sm'>
+          <DataTableHead columns={columns} sort={sort} order={order} onSort={handleSort} />
+          <DataTableBody columns={columns} data={data} actions={actions} />
+        </table>
+      </div>
       {pagination && (
-        <DataTablePagination
-          page={page}
-          pageSize={pageSize}
-          totalItems={totalItems}
-          totalPages={totalPages}
-          onPageChange={handlePageChange}
-        />
-      ) }
+          <DataTablePagination
+            page={page}
+            pageSize={pageSize}
+            totalItems={totalItems}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+          />
+        )}
     </div>
   );
 };

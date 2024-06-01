@@ -6,7 +6,6 @@ import React, { useEffect, useRef, useState } from 'react'
 import { cn } from '@/utils/className'
 import { Label } from '@/components/Label'
 import { uuid } from '@/utils/uuid'
-import { Input } from '@/components/Input'
 import { InputSearch } from '../InputSearch'
 
 const SelectBase = SelectPrimitive.Root
@@ -26,6 +25,7 @@ export interface SelectProps extends React.ComponentProps<typeof SelectBase>, HT
   placeholder?: string;
   options: SelectOption[];
   loading?: boolean;
+  searchable?: boolean;
   onSearchChange?: (query: string) => void;
 }
 
@@ -38,6 +38,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
     options,
     loading = false,
     placeholder = 'Selecione',
+    searchable = true,
     onSearchChange,
     ...props
   }, ref) => {
@@ -97,14 +98,16 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
             <SelectValue placeholder={placeholder} />
           </SelectTrigger>
           <SelectContent>
-            <div className="p-2">
-              <InputSearch
-                value={searchValue}
-                onChange={handleSearchChange}
-                placeholder="Buscar"
-                ref={inputRef}
-              />
-            </div>
+            { searchable && (
+              <div className="p-2">
+                <InputSearch
+                  value={searchValue}
+                  onChange={handleSearchChange}
+                  placeholder="Buscar"
+                  ref={inputRef}
+                />
+              </div>
+            )}
             <SelectGroup>
               { loading && loadingOption() }
               { !loading && filteredOptions.length === 0 && emptyOption() }

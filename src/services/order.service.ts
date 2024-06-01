@@ -19,7 +19,6 @@ export async function orderService(payload: OrderPayload): Promise<OrderResponse
     { id: 3, customerName: 'Alice Johnson', totalAmount: 350, status: 'completed' },
     { id: 4, customerName: 'Bob Brown', totalAmount: 100, status: 'canceled' },
     { id: 5, customerName: 'Charlie Davis', totalAmount: 500, status: 'completed' },
-    // Add more mocked data as needed
   ];
 
   // Apply sorting
@@ -36,13 +35,21 @@ export async function orderService(payload: OrderPayload): Promise<OrderResponse
   // Apply pagination
   const start = (payload.page! - 1) * payload.pageSize!;
   const end = start + payload.pageSize!;
-  const paginatedData = allOrders.slice(start, end);
+  const data = allOrders.slice(start, end);
+
+  // return {
+  //   data,
+  //   totalItems: allOrders.length,
+  //   totalPages: Math.ceil(allOrders.length / payload.pageSize!),
+  //   page: payload.page!,
+  //   pageSize: payload.pageSize!,
+  // };
 
   return {
-    data: paginatedData,
+    data,
     totalItems: allOrders.length,
-    totalPages: Math.ceil(allOrders.length / payload.pageSize!),
-    page: payload.page!,
+    totalPages: 10,
+    page: 1,
     pageSize: payload.pageSize!,
   };
 }

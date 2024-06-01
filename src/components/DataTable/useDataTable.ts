@@ -27,6 +27,7 @@ export const useDataTable = <T,>({ service, sort: defaultSort, order: defaultOrd
     setTotalItems(response.totalItems);
     setTotalPages(response.totalPages);
     setPageSize(response.pageSize);
+    setPage(response.page);
 
     setLoading(false);
   };

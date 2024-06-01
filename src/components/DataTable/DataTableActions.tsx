@@ -1,6 +1,7 @@
 import { Button } from '@/components/Button';
 import { ButtonVariantProps } from '@/components/Button/buttonVariants';
 import { Icons } from '@/components/Icon';
+import { cn } from '@/utils/className';
 
 export interface TableAction<T> extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onClick'>, ButtonVariantProps {
   label?: string;
@@ -23,9 +24,11 @@ export const DataTableActions = <T,>({ actions, row }: DataTableActionsProps<T>)
         
         return (
           <Button
+            {...props}
             key={index}
             onClick={() => onClick(row)}
-            {...props}
+            className={cn('text-xs p-3 h-6 font-normal', { 'w-6 rounded-full' : action.icon && !action.label})}
+            iconClassName='w-3 h-3'
           >
             {action.label}
           </Button>

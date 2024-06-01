@@ -14,7 +14,7 @@ instance.interceptors.request.use((config) => {
     config.signal = controller.signal;
     return config;
   }, (error) => {
-    return Promise.reject(error);
+    throw new Error(error);
   });
 
 export default instance;

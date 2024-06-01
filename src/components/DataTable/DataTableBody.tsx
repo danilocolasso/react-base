@@ -7,11 +7,11 @@ interface DataTableBodyProps<T> extends Omit<DataTableProps<T>, 'service'> {
 
 export const DataTableBody = <T,>({ data, columns, actions }: DataTableBodyProps<T>) => {
   return (
-    <tbody>
+    <tbody className='[&_tr:last-child]:border-0'>
       {data.map((row, index) => (
-        <tr key={index}>
+        <tr key={index} className='border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted'>
           {columns.map((column) => (
-            <td key={String(column.key)}>
+            <td key={String(column.key)} className='p-2 align-middle [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]'>
               {row[column.key] as string}
             </td>
           ))}

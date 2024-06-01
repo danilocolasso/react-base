@@ -6,7 +6,9 @@ import { Icon, Icons } from '@/components/Icon';
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, ButtonVariantProps {
   asChild?: boolean;
   loading?: boolean;
-  icon?: keyof typeof Icons;
+  icon?: keyof typeof Icons | false;
+  iconSide?: 'left' | 'right';
+  iconClassName?: string;
 }
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -15,6 +17,8 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     variant,
     size,
     icon,
+    iconSide = 'left',
+    iconClassName,
     loading,
     disabled,
     type = 'button',
@@ -22,7 +26,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ...props
   }, ref) => {
     return (
-      <button
+      <button 
         type={type}
         className={cn(buttonVariants({ variant, size }), className)}
         disabled={disabled || loading}
@@ -30,7 +34,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
       >
         <div className='flex gap-2 items-center'>
-          { icon && !loading && <Icon name={icon} /> }
+          { icon && !loading && <Icon name={icon} className={iconClassName} /> }
           { loading && <Icon name="FaSpinner" className="animate-spin" /> }
           { props.children }
         </div>
