@@ -1,3 +1,4 @@
+import { cn } from '@/utils/className';
 import { DataTableProps, TableColumn } from './DataTable';
 import { Button } from '@/components/Button';
 
@@ -8,11 +9,14 @@ interface DataTableHeadProps<T> extends Omit<DataTableProps<T>, 'service'> {
 export const DataTableHead = <T,>({ columns, sort, order, onSort }: DataTableHeadProps<T>) => {
   const getHeaderColumn = (column: TableColumn<T>) => {
     if (column.sortable) {
+      const icon = sort === column.key && (order === 'asc' ? 'FaCaretUp' : 'FaCaretDown');
+
       return (
         <Button
           variant='ghost'
-          icon={sort === column.key && (order === 'asc' ? 'FaCaretUp' : 'FaCaretDown')}
-          className='flex items-center gap-1'
+          icon={icon}
+          iconSide='right'
+          className={cn('flex items-center gap-1 -ml-4', { 'pr-10': !icon })}
           onClick={() => onSort(column.key)}
         >
           {column.label}

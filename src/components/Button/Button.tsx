@@ -33,7 +33,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
         ref={ref}
       >
-        <div className='flex gap-2 items-center'>
+        <div className={cn('flex gap-2 items-center', { 'flex-row-reverse' : iconSide === 'right' })}>
           { icon && !loading && <Icon name={icon} className={iconClassName} /> }
           { loading && <Icon name="FaSpinner" className="animate-spin" /> }
           { props.children }

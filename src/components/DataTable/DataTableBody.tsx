@@ -12,7 +12,7 @@ export const DataTableBody = <T,>({ data, columns, actions }: DataTableBodyProps
         <tr key={index} className='border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted'>
           {columns.map((column) => (
             <td key={String(column.key)} className='p-2 align-middle [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]'>
-              {row[column.key] as string}
+              { column.value ? column.value(row) : row[column.key] as string }
             </td>
           ))}
           { actions && <td><DataTableActions actions={actions} row={row} /></td> }

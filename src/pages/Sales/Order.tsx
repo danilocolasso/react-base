@@ -1,6 +1,9 @@
-import { DataTable, TableColumn } from '@/components/DataTable';
-import { TableAction } from '@/components/DataTable/DataTableActions';
+import { Button } from '@/components/Button';
+import { DataTable, TableColumn, TableAction } from '@/components/DataTable';
+import { MainLayout } from '@/layouts/MainLayout';
 import { orderService } from '@/services/order.service';
+import { cn } from '@/utils/className';
+import { Link } from 'react-router-dom';
 
 interface Order {
   id: number;
@@ -23,30 +26,55 @@ const columns: TableColumn<Order>[] = [
   {
     key: 'status',
     label: 'Status',
+    value: (row) => {
+      return (
+        <div
+          className={cn('inline-flex px-2 py-1 text-xs bg-primary text-white rounded-sm capitalize', { 'bg-red-400': row.status === 'pending' })}
+        >
+          {row.status}
+        </div>
+      );
+    }
   },
 ];
 
 const actions: TableAction<Order>[] = [
   {
     icon: 'FaSearch',
-    variant: 'primary',
-    className: 'rounded-full',
     title: 'Visualizar',
     onClick: (item: Order) => {
       console.log('View', item);
     },
   },
   {
-    label: 'Editar',
+    icon: 'FaEdit',
+    title: 'Editar',
     onClick: (item: Order) => {
       console.log('Edit', item);
+    },
+  },
+  {
+    icon: 'FaTrash',
+    title: 'Excluir',
+    onClick: (item: Order) => {
+      console.log('Delete', item);
     },
   },
 ];
 
 export const Order = () => {
   return (
-    <div className='container mx-auto py-10'>
+    <MainLayout className='gap-2'>
+      <Link to='new' className='self-end'>
+        <Button
+          className='self-end'
+          icon='FaPlus'
+          iconSide='right'
+          iconClassName='h-3 h-3'
+        >
+          Novo Pedido
+        </Button>
+      </Link>
       <DataTable
         service={orderService}
         columns={columns}
@@ -54,6 +82,6 @@ export const Order = () => {
         sort="customerName"
         order="asc"
       />
-    </div>
+    </MainLayout>
   );
 };
