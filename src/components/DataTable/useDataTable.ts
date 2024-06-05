@@ -44,6 +44,7 @@ export const useDataTable = <T,>({ service, sort: defaultSort, order: defaultOrd
   };
 
   const handlePageChange = (page: number) => {
+    console.log(page);
     setPage(page);
     fetchData();
   };

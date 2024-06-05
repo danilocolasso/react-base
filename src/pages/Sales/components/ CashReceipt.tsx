@@ -1,16 +1,16 @@
 import { Section } from '@/components/Section';
 import { Select, SelectOption } from '@/components/Select';
 import React from 'react';
-import { useSales } from '../useSales';
 import { Input } from '@/components/Input';
 import { Textarea } from '@/components/Textarea';
 import { AsyncSelect } from '@/components/AsyncSelect/AsyncSelect';
 import { recipeMethodService } from '@/services/receipt-method.service';
+import { useOrdersNew } from '../hooks/useOrderNew';
 
 export interface CashReciptProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export const CashRecipt: React.FC<CashReciptProps> = ({ children, ...props }) => {
-  const { register, errors } = useSales();
+  const { register, errors } = useOrdersNew();
 
   const inputAccountOptions: SelectOption[] = [
     {

@@ -9,7 +9,7 @@ import { SaleInfo } from './components/SaleInfo';
 import { Button } from '@/components/Button';
 import { Total } from './components/Total';
 
-export const Sales = () => {
+export const OrdersNew = () => {
   return (
     <MainLayout className='gap-8'>
       <SaleInfo />
@@ -20,7 +20,9 @@ export const Sales = () => {
       <Total label='Total da venda' value='0.00' className='font-medium' />
       <CashRecipt />
       <Taxes />
-      <Button className='self-start'>Registrar</Button>
+      <Button className='self-start' onClick={() => console.log('foo')}>
+        Registrar
+      </Button>
     </MainLayout>
   )
 };

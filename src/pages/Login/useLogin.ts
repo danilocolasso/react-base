@@ -1,10 +1,12 @@
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm, createSchema, validator, InferType } from '@/components/Form';
-import { AuthContext } from '@/contexts/Auth/AuthContext';
+import { useAuth } from '@/contexts/Auth/useAuth';
 
 export const useLogin = () => {
   const [isLoading, setIsLoading] = useState(false)
+
+  const { login } = useAuth()
 
   const schema = createSchema({
     username: validator.string().min(1, 'O campo "Usuário" é obrigatório'),
@@ -17,14 +19,13 @@ export const useLogin = () => {
     schema,
   })
 
-  const auth = useContext(AuthContext)
   const navigate = useNavigate() 
 
   const handleLogin = async (data: LoginForm) => {
     setIsLoading(true)
 
     try {
-      const response = await auth.login(data.username, data.password)
+      const response = await login(data.username, data.password)
       
       if (response.success) {
         navigate('/')

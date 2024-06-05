@@ -1,7 +1,7 @@
 import { DynamicElementAdder } from '@/components/DynamicElementAdder';
 import { Input } from '@/components/Input';
 import { useState } from 'react';
-import { useSales } from '../useSales';
+import { useOrdersNew } from '../hooks/useOrderNew';
 
 export interface DynamicItemAdderProps extends React.HTMLAttributes<HTMLDivElement> {
   fieldName: 'goodsForSale' | 'selfManufacturedGoods' | 'otherStocks' | 'services';
@@ -10,7 +10,7 @@ export interface DynamicItemAdderProps extends React.HTMLAttributes<HTMLDivEleme
 export const DynamicItemAdder: React.FC<DynamicItemAdderProps> = ({ fieldName, children, ...props }) => {
   const [index, setIndex] = useState(0);
 
-  const { register, calculateTotal, errors } = useSales();
+  const { register, calculateTotal, errors } = useOrdersNew();
   
   return (
     <DynamicElementAdder
@@ -46,7 +46,7 @@ export const DynamicItemAdder: React.FC<DynamicItemAdderProps> = ({ fieldName, c
         />
         <Input
           inputClassName='text-right'
-          readOnly
+          disabled
           {...register(`${fieldName}.${index}.total`)}
           error={errors[fieldName]?.[index]?.total?.message}
         />

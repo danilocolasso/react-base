@@ -1,18 +1,28 @@
+import api from '@/lib/api'
 import { PaginatedPayload } from '@/services/base/PaginatedPayload';
 import { PaginatedResponse } from './base/PaginatedResponse';
 
-export class OrderPayload extends PaginatedPayload {
+export interface Order {
+  customer: string
+  date: Date
+  goodsForSale: number
+  id: number
+  otherStocks: number
+  requester: string
+  selfManufacturedGoods: number
+  seller: string
+  services: number
+  taxes: number
+  total: number
+}
+
+export class OrdersPayload extends PaginatedPayload {
   customerName?: string;
 }
 
-export class OrderResponse extends PaginatedResponse<{
-  id: number;
-  customerName: string;
-  totalAmount: number;
-  status: string;
-}> {}
+export class OrdersResponse extends PaginatedResponse<Order> {}
 
-export async function orderService(payload: OrderPayload): Promise<OrderResponse> {
+const mockOrders = (payload) => {
   const allOrders = [
     { id: 1, customerName: 'John Doe', totalAmount: 150, status: 'completed' },
     { id: 2, customerName: 'Jane Smith', totalAmount: 200, status: 'pending' },
@@ -52,4 +62,11 @@ export async function orderService(payload: OrderPayload): Promise<OrderResponse
     page: 1,
     pageSize: payload.pageSize!,
   };
+}
+
+
+export async function ordersService(payload: OrdersPayload): Promise<OrdersResponse> {
+  const response = await api.get('orders', { params: payload })
+  
+  return response.data
 }

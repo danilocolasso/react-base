@@ -1,40 +1,36 @@
 import { Button } from '@/components/Button';
 import { DataTable, TableColumn, TableAction } from '@/components/DataTable';
 import { MainLayout } from '@/layouts/MainLayout';
-import { orderService } from '@/services/order.service';
-import { cn } from '@/utils/className';
+import { Order, ordersService } from '@/services/orders.service';
 import { Link } from 'react-router-dom';
-
-interface Order {
-  id: number;
-  customerName: string;
-  totalAmount: number;
-  status: string;
-}
 
 const columns: TableColumn<Order>[] = [
   {
-    key: 'customerName',
-    label: 'Customer Name',
+    key: 'customer',
+    label: 'Cliente',
     sortable: true,
   },
   {
-    key: 'totalAmount',
-    label: 'Total Amount',
+    key: 'date',
+    label: 'Data',
+    sortable: true,
+    value: (row) => new Date(row.date).toLocaleDateString(),
+  },
+  {
+    key: 'seller',
+    label: 'Vendedor',
     sortable: true,
   },
   {
-    key: 'status',
-    label: 'Status',
-    value: (row) => {
-      return (
-        <div
-          className={cn('inline-flex px-2 py-1 text-xs bg-primary text-white rounded-sm capitalize', { 'bg-red-400': row.status === 'pending' })}
-        >
-          {row.status}
-        </div>
-      );
-    }
+    key: 'requester',
+    label: 'Solicitante',
+    sortable: true,
+  },
+  {
+    key: 'total',
+    label: 'Total',
+    sortable: true,
+    value: (row) => row.total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
   },
 ];
 
@@ -62,7 +58,7 @@ const actions: TableAction<Order>[] = [
   },
 ];
 
-export const Order = () => {
+export const Orders = () => {
   return (
     <MainLayout className='gap-2'>
       <Link to='new' className='self-end'>
@@ -76,10 +72,10 @@ export const Order = () => {
         </Button>
       </Link>
       <DataTable
-        service={orderService}
+        service={ordersService}
         columns={columns}
         actions={actions}
-        sort="customerName"
+        sort="customer"
         order="asc"
       />
     </MainLayout>

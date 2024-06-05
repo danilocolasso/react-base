@@ -2,13 +2,13 @@ import { Button } from '@/components/Button';
 import { Label } from '@/components/Label';
 import { Section } from '@/components/Section';
 import React from 'react';
-import { useSales } from '../useSales';
 import { Textarea } from '@/components/Textarea';
+import { useOrdersNew } from '../hooks/useOrderNew';
 
 export interface TaxesProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export const Taxes: React.FC<TaxesProps> = ({ children, ...props }) => {
-  const { register, errors } = useSales();
+  const { register, errors } = useOrdersNew();
 
   return (
     <Section title='Impostos' {...props}>

@@ -1,12 +1,19 @@
 import React from 'react';
-import { Icon, Icons } from '@/components/Icon';
-import { useHeaderUser } from './useHeaderUser';
-import { Link } from 'react-router-dom';
+import { Icon } from '@/components/Icon';
+import { Link, useNavigate } from 'react-router-dom';
+import { Button } from '@/components/Button';
+import { useAuth } from '@/contexts/Auth/useAuth';
 
-export interface HeaderUserProps extends React.HTMLAttributes<HTMLDivElement> {}
+export interface HeaderUserProps extends React.HTMLAttributes<HTMLDivElement> { }
 
 export const HeaderUser: React.FC<HeaderUserProps> = ({ className, ...props }) => {
-  const { actions } = useHeaderUser();
+  const { logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+  }
 
   return (
     <div className='flex gap-8 pl-8 bg-brand-secondary text-white' {...props}>
@@ -19,12 +26,23 @@ export const HeaderUser: React.FC<HeaderUserProps> = ({ className, ...props }) =
       </div>
 
       <div className='flex gap-8 p-4 bg-brand-primary self-center'>
-        {actions.map((action, index) => (
-          <Link key={index} to={action.route} className='flex gap-2 items-center'>
-            <Icon name={action.icon as keyof typeof Icons} />
-            <span className='text-sm'>{action.label}</span>
-          </Link>
-        ))}
+        <Link to='/settings' className='flex gap-2 items-center'>
+          <Button
+            variant='link'
+            icon='FaCog'
+            className='flex gap-2 items-center text-white font-normal'
+          >
+            Configurações
+          </Button>
+        </Link>
+        <Button
+          variant='link'
+          icon='FaSignOutAlt'
+          className='flex gap-2 items-center text-white font-normal'
+          onClick={handleLogout}
+        >
+          Sair
+        </Button>
       </div>
     </div>
   );

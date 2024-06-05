@@ -49,7 +49,7 @@ export const DataTable = <T,>({
 
     return (
       <div className='flex items-center justify-center absolute inset-0 z-50'>
-        <div className='flex gap-2 items-center px-4 py-2 bg-black/5 rounded-sm text-gray-400 cursor-default select-none'>
+        <div className='flex gap-2 items-center px-4 py-2 bg-black/40 rounded-sm text-white cursor-default select-none'>
           <Icon name='FaSpinner' className='animate-spin' />
           <span>Carregando</span>
         </div>

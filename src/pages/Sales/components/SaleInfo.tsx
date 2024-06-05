@@ -2,13 +2,13 @@ import { Input } from '@/components/Input';
 import { Section } from '@/components/Section';
 import React from 'react';
 import { Select, SelectOption } from '@/components/Select';
-import { useSales } from '../useSales';
 import { DatePicker } from '@/components/DatePicker';
+import { useOrdersNew } from '../hooks/useOrderNew';
 
 export interface SaleInfoProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export const SaleInfo: React.FC<SaleInfoProps> = ({ children, ...props }) => {
-  const { register, errors } = useSales();
+  const { register, errors } = useOrdersNew();
 
   const sellerOptions: SelectOption[] = [
     {
