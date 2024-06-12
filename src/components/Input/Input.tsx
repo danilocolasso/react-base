@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Label } from '@/components/Label';
 import { cn } from '@/utils/className';
-import { uuid } from '@/utils/uuid';
 import { Message } from '@/components/Message';
+import { generateRandomId } from '@/components/Form';
 
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
@@ -22,9 +22,8 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     required,
     ...props
   }, ref) => {
-
     if (label && !id) {
-      id = label.toLocaleLowerCase().replace(/\s+/g, '-') + '-' + uuid();
+      id = generateRandomId(label);
     }
 
     return (

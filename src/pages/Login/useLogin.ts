@@ -15,7 +15,7 @@ export const useLogin = () => {
 
   type LoginForm = InferType<typeof schema>
 
-  const { register, handleSubmit, errors } = useForm<LoginForm>({
+  const form = useForm<LoginForm>({
     schema,
   })
 
@@ -41,10 +41,8 @@ export const useLogin = () => {
   };
 
   return {
-    register,
-    handleSubmit,
+    form,
     handleLogin,
     isLoading,
-    errors
   };
 };

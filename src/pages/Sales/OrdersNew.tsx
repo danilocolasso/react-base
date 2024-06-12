@@ -8,21 +8,27 @@ import { Taxes } from './components/Taxes';
 import { SaleInfo } from './components/SaleInfo';
 import { Button } from '@/components/Button';
 import { Total } from './components/Total';
+import { useOrdersNew } from './hooks/useOrderNew';
+import { Form } from '@/components/Form';
 
 export const OrdersNew = () => {
+  const { form, handleSubmitSale, } = useOrdersNew();
+
   return (
     <MainLayout className='gap-8'>
-      <SaleInfo />
-      <GoodsForSale />
-      <Services />
-      <SelfManufacturedGoods />
-      <OtherStocks />
-      <Total label='Total da venda' value='0.00' className='font-medium' />
-      <CashRecipt />
-      <Taxes />
-      <Button className='self-start' onClick={() => console.log('foo')}>
-        Registrar
-      </Button>
+      <Form context={form} onSubmit={handleSubmitSale}>
+        <SaleInfo />
+        <GoodsForSale />
+        <Services />
+        <SelfManufacturedGoods />
+        <OtherStocks />
+        <Total label='Total da venda' value='0.00' className='font-medium' />
+        <CashRecipt />
+        <Taxes />
+        <Button type='submit' className='self-start'>
+          Registrar
+        </Button>
+      </Form>
     </MainLayout>
   )
 };

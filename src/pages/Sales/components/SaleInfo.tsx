@@ -2,13 +2,12 @@ import { Input } from '@/components/Input';
 import { Section } from '@/components/Section';
 import React from 'react';
 import { Select, SelectOption } from '@/components/Select';
-import { DatePicker } from '@/components/DatePicker';
-import { useOrdersNew } from '../hooks/useOrderNew';
+import { useFormContext } from '@/components/Form';
 
 export interface SaleInfoProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export const SaleInfo: React.FC<SaleInfoProps> = ({ children, ...props }) => {
-  const { register, errors } = useOrdersNew();
+  const { register, formState: { errors } } = useFormContext();
 
   const sellerOptions: SelectOption[] = [
     {
@@ -55,47 +54,43 @@ export const SaleInfo: React.FC<SaleInfoProps> = ({ children, ...props }) => {
   return (
     <Section title={getTitle()} subtitle={getSubtitle()} {...props}>
       <div className='flex gap-4'>
-        {/* <Input
-          type='text'
+        <Input
+          type='date'
           label='Data'
           className='w-1/3'
           { ...register('date') }
-          error={errors.date?.message}
-        /> */}
-        <DatePicker
-          label='Data'
-          className='w-1/3'
+          error={errors.date?.message as string}
         />
         <Select
+          name='seller'
           label='Vendedor'
           className='w-2/3'
           options={sellerOptions}
-          { ...register('seller') }
-          error={errors.seller?.message}
+          error={errors.seller?.message as string}
         />
       </div>
 
       <div className='flex gap-4'>
         <Select
+          name='customer'
           label='Cliente'
           className='w-2/5'
           options={customerOptions}
-          { ...register('customer') }
-          error={errors.customer?.message}
+          error={errors.customer?.message as string}
         />
         <Select
+          name='requester'
           label='Solicitante'
           className='w-1/5'
           options={requesterOption}
-          { ...register('requester') }
-          error={errors.requester?.message}
+          error={errors.requester?.message as string}
         />
         <Input
           type='text'
           label='Email'
           className='w-2/5'
           { ...register('email') }
-          error={errors.email?.message}
+          error={errors.email?.message as string}
         />
       </div>
     </Section>

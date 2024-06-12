@@ -5,8 +5,9 @@ import { SelectItem } from './SelectItem'
 import React, { useEffect, useRef, useState } from 'react'
 import { cn } from '@/utils/className'
 import { Label } from '@/components/Label'
-import { uuid } from '@/utils/uuid'
-import { InputSearch } from '../InputSearch'
+import { InputSearch } from '@/components/InputSearch'
+import { generateRandomId } from '@/components/Form'
+import { Message } from '@/components/Message'
 
 const SelectBase = SelectPrimitive.Root
 const SelectGroup = SelectPrimitive.Group
@@ -39,6 +40,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
     loading = false,
     placeholder = 'Selecione',
     searchable = true,
+    error,
     onSearchChange,
     ...props
   }, ref) => {
@@ -47,8 +49,9 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
     const [filteredOptions, setFilteredOptions] = useState<SelectOption[]>(options);
 
     if (label && !id) {
-      id = label.toLocaleLowerCase().replace(/\s+/g, '-') + '-' + uuid();
+      id = generateRandomId(label);
     }
+    
     const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       const value = event.target.value;
       setSearchValue(value);
@@ -119,6 +122,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
             </SelectGroup>
           </SelectContent>
         </SelectBase>
+        {error && <Message variant='destructive'>{error}</Message>}
       </div>
     );
   }
