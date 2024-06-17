@@ -1,17 +1,18 @@
-import * as SelectPrimitive from '@radix-ui/react-select'
-import { SelectTrigger } from './SelectTrigger'
-import { SelectContent } from './SelectContent'
-import { SelectItem } from './SelectItem'
-import React, { useEffect, useRef, useState } from 'react'
-import { cn } from '@/utils/className'
-import { Label } from '@/components/Label'
-import { InputSearch } from '@/components/InputSearch'
-import { generateRandomId } from '@/components/Form'
-import { Message } from '@/components/Message'
+import * as SelectPrimitive from '@radix-ui/react-select';
+import { SelectTrigger } from './SelectTrigger';
+import { SelectContent } from './SelectContent';
+import { SelectItem } from './SelectItem';
+import React, { useEffect, useRef, useState } from 'react';
+import { cn } from '@/utils/className';
+import { Label } from '@/components/Label';
+import { InputSearch } from '@/components/InputSearch';
+import { generateRandomId } from '@/components/Form';
+import { Message } from '@/components/Message';
+import { Controller, useFormContext } from 'react-hook-form';
 
-const SelectBase = SelectPrimitive.Root
-const SelectGroup = SelectPrimitive.Group
-const SelectValue = SelectPrimitive.Value
+const SelectBase = SelectPrimitive.Root;
+const SelectGroup = SelectPrimitive.Group;
+const SelectValue = SelectPrimitive.Value;
 
 type HTMLAttributesWithoutDefaultValue = Omit<React.HTMLAttributes<HTMLElement>, 'defaultValue' | 'dir'>;
 export type SelectOption = {
@@ -20,6 +21,7 @@ export type SelectOption = {
 };
 
 export interface SelectProps extends React.ComponentProps<typeof SelectBase>, HTMLAttributesWithoutDefaultValue {
+  name?: string;
   label?: string;
   required?: boolean;
   error?: string;
@@ -33,6 +35,7 @@ export interface SelectProps extends React.ComponentProps<typeof SelectBase>, HT
 export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
   ({
     id,
+    name,
     label,
     required,
     className,
@@ -44,6 +47,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
     onSearchChange,
     ...props
   }, ref) => {
+    const { control } = useFormContext();
     const [searchValue, setSearchValue] = useState<string>('');
     const inputRef = useRef<HTMLInputElement>(null);
     const [filteredOptions, setFilteredOptions] = useState<SelectOption[]>(options);
@@ -94,36 +98,42 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
     }, [options]);
 
     return (
-      <div className={cn('flex flex-col gap-1 w-full', className)} {...props} ref={ref}>
-        {Label && <Label htmlFor={id} required={required}>{label}</Label>}
-        <SelectBase onOpenChange={handleOnOpenChange}>
-          <SelectTrigger className='w-full'>
-            <SelectValue placeholder={placeholder} />
-          </SelectTrigger>
-          <SelectContent>
-            { searchable && (
-              <div className="p-2">
-                <InputSearch
-                  value={searchValue}
-                  onChange={handleSearchChange}
-                  placeholder="Buscar"
-                  ref={inputRef}
-                />
-              </div>
-            )}
-            <SelectGroup>
-              { loading && loadingOption() }
-              { !loading && filteredOptions.length === 0 && emptyOption() }
-              { !loading && filteredOptions.map(option => (
-                <SelectItem key={option.value} value={option.value as string} className='px-4'>
-                  {option.label}
-                </SelectItem>
-              )) }
-            </SelectGroup>
-          </SelectContent>
-        </SelectBase>
-        {error && <Message variant='destructive'>{error}</Message>}
-      </div>
+      <Controller
+        name={name || ''}
+        control={control}
+        render={({ field }) => (
+          <div className={cn('flex flex-col gap-1 w-full', className)} ref={ref}>
+            {label && <Label htmlFor={id} required={required}>{label}</Label>}
+            <SelectBase onValueChange={field.onChange} onOpenChange={handleOnOpenChange} {...props} >
+              <SelectTrigger className='w-full' {...field}>
+                <SelectValue placeholder={placeholder} />
+              </SelectTrigger>
+              <SelectContent>
+                {searchable && (
+                  <div className="p-2">
+                    <InputSearch
+                      value={searchValue}
+                      onChange={handleSearchChange}
+                      placeholder="Buscar"
+                      ref={inputRef}
+                    />
+                  </div>
+                )}
+                <SelectGroup>
+                  {loading && loadingOption()}
+                  {!loading && filteredOptions.length === 0 && emptyOption()}
+                  {!loading && filteredOptions.map(option => (
+                    <SelectItem key={option.value} value={option.value as string} className='px-4'>
+                      {option.label}
+                    </SelectItem>
+                  ))}
+                </SelectGroup>
+              </SelectContent>
+            </SelectBase>
+            {error && <Message variant='destructive'>{error}</Message>}
+          </div>
+        )}
+      />
     );
   }
 );

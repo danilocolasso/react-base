@@ -1,7 +1,7 @@
 import { Section } from '@/components/Section';
 import React from 'react';
 import { Total } from './Total';
-import { DynamicItemAdder } from './DynamicProductAdder';
+import { MultipleProduct } from './MultipleProduct';
 
 export interface ServicesProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -14,7 +14,7 @@ export const Services: React.FC<ServicesProps> = ({ children, ...props }) => {
         <span>Valor unitário</span>
         <span>Total</span>
       </div>
-      <DynamicItemAdder name='services' />
+      <MultipleProduct name='services' />
       <Total label='Total em serviços' value='0.00' />
     </Section>
   );

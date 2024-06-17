@@ -1,7 +1,7 @@
 import { Section } from '@/components/Section';
 import React from 'react';
 import { Total } from './Total';
-import { DynamicItemAdder } from './DynamicProductAdder';
+import { MultipleProduct } from './MultipleProduct';
 
 export interface GoodsForSaleProps extends React.HTMLAttributes<HTMLDivElement> { }
 
@@ -14,7 +14,7 @@ export const GoodsForSale: React.FC<GoodsForSaleProps> = ({ children, ...props }
         <span>Valor unitário</span>
         <span>Total</span>
       </div>
-      <DynamicItemAdder name='goodsForSale' />
+      <MultipleProduct name='goodsForSale' />
       <Total label='Total em mercadorias para revenda' value='0.00' />
     </Section>
   );

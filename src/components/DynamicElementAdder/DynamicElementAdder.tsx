@@ -27,10 +27,10 @@ export const DynamicElementAdder = React.forwardRef<HTMLDivElement, DynamicEleme
             {element}
             <Button
               title='Remover'
-              variant='destructive'
+              variant='link'
               icon='FaTrashAlt'
               size='icon'
-              className='absolute top-0 -right-8 rounded-full transform translate-x-1/2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0 transition-all'
+              className='absolute top-0 -right-8 rounded-full transform translate-x-1/2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-destructive'
               onClick={() => removeElement(index, onRemove)}
             />
           </div>
