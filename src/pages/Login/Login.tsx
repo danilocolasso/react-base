@@ -8,7 +8,6 @@ import { Paper } from '@/components/Paper';
 
 export const Login = () => {
   const { form, handleLogin, isLoading } = useLogin();
-  console.log(form)
   const { register, errors } = form;
 
   return (

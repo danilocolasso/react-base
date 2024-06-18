@@ -7,7 +7,7 @@ export const sidebarItems: SidebarItemProps[] = [
       children: [
         {
           label: 'Vendas',
-          route: '/operations/orders',
+          route: '/operations/sales',
         },
         {
           label: 'Recebimentos',

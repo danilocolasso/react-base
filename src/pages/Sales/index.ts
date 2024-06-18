@@ -1,1 +1,2 @@
-export { OrdersNew } from './OrdersNew';
+export { Sales } from './Sales';
+export { SalesCreate } from './SalesCreate';

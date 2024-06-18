@@ -1,9 +1,9 @@
-import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom'
-import { AuthGuard } from '@/guards/AuthGuard'
-import { Login } from '@/pages/Login'
-import { Home } from '@/pages/Home'
-import { OrdersNew } from '@/pages/Sales/OrdersNew'
-import { Orders } from '@/pages/Sales/Orders'
+import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
+import { AuthGuard } from '@/guards/AuthGuard';
+import { Login } from '@/pages/Login';
+import { Home } from '@/pages/Home';
+import { SalesCreate } from '@/pages/Sales';
+import { Sales } from '@/pages/Sales';
 
 const router = createBrowserRouter([
   {
@@ -15,12 +15,12 @@ const router = createBrowserRouter([
     Component: Home,
   },
   { // TODO remove
-    path: '/operations/orders/new',
-    Component: OrdersNew,
+    path: '/operations/sales/create',
+    Component: SalesCreate,
   },
   { // TODO remove
-    path: '/operations/orders',
-    Component: Orders,
+    path: '/operations/sales',
+    Component: Sales,
   },
   {
     path: '',
@@ -32,7 +32,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Home />,
+        Component: Home,
       }
     ],
   }

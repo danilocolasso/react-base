@@ -18,23 +18,23 @@ export const MultipleProduct = React.forwardRef<HTMLDivElement, MultipleProductP
       name
     });
 
-    const handleQuantidadeChange = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
-      let quantidade = parseInt(e.target.value || '0');
-      setValue(`${name}.${index}.quantidade`, quantidade);
+    const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
+      let quantity = parseInt(e.target.value || '0');
+      setValue(`${name}.${index}.quantity`, quantity);
       calculateTotal(index);
     }
 
-    const handleValorUnitarioChange = (e: React.KeyboardEvent<HTMLInputElement>, index: number) => {
-      setValue(`${name}.${index}.valorUnitario`, formatCurrency(e.currentTarget.value))
+    const handlePriceChange = (e: React.KeyboardEvent<HTMLInputElement>, index: number) => {
+      setValue(`${name}.${index}.price`, formatCurrency(e.currentTarget.value))
       calculateTotal(index);
     }
 
     const calculateTotal = (index: number) => {
-      const quantidade = getValues(`${name}.${index}.quantidade`);
-      let valorUnitario = getValues(`${name}.${index}.valorUnitario`);
-      valorUnitario = parseFloat((valorUnitario || '0').toString().replace(/\D/g, '')) / 100;
+      const quantity = getValues(`${name}.${index}.quantity`);
+      let price = getValues(`${name}.${index}.price`);
+      price = parseFloat((price || '0').toString().replace(/\D/g, '')) / 100;
 
-      const total = quantidade * valorUnitario;
+      const total = quantity * price;
       setValue((`${name}.${index}.total`), formatCurrency(total.toFixed(2)));
     };
 
@@ -60,14 +60,14 @@ export const MultipleProduct = React.forwardRef<HTMLDivElement, MultipleProductP
                 min={1}
                 step={1}
                 defaultValue={1}
-                {...register(`${name}.${index}.quantidade`, {
-                  onChange: (e) => handleQuantidadeChange(e, index)
+                {...register(`${name}.${index}.quantity`, {
+                  onChange: (e) => handleQuantityChange(e, index)
                 })}
-                error={(errors[name] as any)?.[index]?.quantidade?.message}
+                error={(errors[name] as any)?.[index]?.quantity?.message}
               />
               <InputCurrency
-                onKeyUp={(e) => handleValorUnitarioChange(e, index)}
-                {...register(`${name}.${index}.valorUnitario`)}
+                onKeyUp={(e) => handlePriceChange(e, index)}
+                {...register(`${name}.${index}.price`)}
               />
               <Input
                 inputClassName='text-right'

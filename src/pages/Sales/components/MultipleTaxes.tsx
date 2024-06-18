@@ -75,25 +75,25 @@ export const MultipleTaxes = React.forwardRef<HTMLDivElement, MultipleTaxesProps
               <Select
                 className='col-span-4'
                 options={taxTypes}
-                {...register(`taxes.${index}.tipo`)}
-                error={(errors.taxes as any)?.[index]?.tipo?.message}
+                {...register(`taxes.${index}.taxType`)}
+                error={(errors.taxes as any)?.[index]?.taxType?.message}
               />
               <InputCurrency
                 className='col-span-3'
-                {...register(`taxes.${index}.tributoRecolher`)}
-                error={(errors.taxes as any)?.[index]?.valor?.message}
+                {...register(`taxes.${index}.taxValue`)}
+                error={(errors.taxes as any)?.[index]?.value?.message}
               />
               <Input
                 type='date'
                 className='col-span-3'
-                {...register(`taxes.${index}.vencimento`)}
-                error={(errors.taxes as any)?.[index]?.vencimento?.message}
+                {...register(`taxes.${index}.dueDate`)}
+                error={(errors.taxes as any)?.[index]?.dueDate?.message}
               />
               <InputCurrency
                 className='col-span-2'
-                {...register(`taxes.${index}.valor`)} // To do: Fix onChange option
+                {...register(`taxes.${index}.value`)} // To do: Fix onChange option
                 onChange={(e) => { }} // This one works
-                error={(errors.taxes as any)?.[index]?.valor?.message}
+                error={(errors.taxes as any)?.[index]?.value?.message}
               />
             </div>
             <Button

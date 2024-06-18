@@ -8,11 +8,11 @@ import { Taxes } from './components/Taxes';
 import { SaleInfo } from './components/SaleInfo';
 import { Button } from '@/components/Button';
 import { Total } from './components/Total';
-import { useOrdersNew } from './hooks/useOrderNew';
+import { useSalesCreate } from './hooks/useSalesCreate';
 import { Form } from '@/components/Form';
 
-export const OrdersNew = () => {
-  const { form, handleSubmitSale, } = useOrdersNew();
+export const SalesCreate = () => {
+  const { form, handleSubmitSale, } = useSalesCreate();
 
   return (
     <MainLayout className='gap-8'>

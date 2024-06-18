@@ -4,6 +4,6 @@ export const breadcrumbsNames: Record<string, string> = {
   login: 'Login',
   users: 'Usuários',
   operations: 'Operações',
-  orders: 'Vendas',
-  new: 'Registrar',
+  sales: 'Vendas',
+  create: 'Registrar',
 }
