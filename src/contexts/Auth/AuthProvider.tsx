@@ -3,7 +3,7 @@ import { AuthContext } from './AuthContext.tsx'
 import { useEffect, useState } from 'react'
 import { User } from '@/types/user'
 import { loginService } from '@/services/login.service'
-import { jwtDecode } from 'jwt-decode'
+// import { jwtDecode } from 'jwt-decode'
 import api from '@/lib/api'
 import axios, { AxiosError } from 'axios'
 
@@ -25,7 +25,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
 		api.defaults.headers.Authorization = `Bearer ${token}`
 
-		const data: any = jwtDecode(token)
+		// const data: any = jwtDecode(token)
 
 		// const user: User = {
 		//     id: Number(data.id),

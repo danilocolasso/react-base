@@ -92,7 +92,7 @@ export const MultipleTaxes = React.forwardRef<HTMLDivElement, MultipleTaxesProps
               <InputCurrency
                 className='col-span-2'
                 {...register(`taxes.${index}.value`)} // To do: Fix onChange option
-                onChange={(e) => { }} // This one works
+                // onChange={(e) => { }} // This one works
                 error={(errors.taxes as any)?.[index]?.value?.message}
               />
             </div>

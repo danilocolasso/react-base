@@ -11,8 +11,8 @@ interface DataTablePaginationProps {
 
 export const DataTablePagination = ({
   page,
-  pageSize,
-  totalItems,
+  // pageSize,
+  // totalItems,
   totalPages,
   onPageChange,
 }: DataTablePaginationProps) => {
